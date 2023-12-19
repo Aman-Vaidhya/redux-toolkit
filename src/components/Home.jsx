@@ -4,7 +4,7 @@ import Cart from './Cart'
 
 const Home = () => {
   return (
-    <div>
+    <div style={{"display":"flex"}}>
       <Products />
       <Cart />
     </div>

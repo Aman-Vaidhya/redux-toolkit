@@ -6,6 +6,7 @@ import { add, remove } from '../features/cartSlice';
 const Products = () => {
     const state = useSelector((state) => state);
     const { loading, product, error } = state.products
+    const {total} = state.cart
     const { cart } = state.cart
     const dispatch = useDispatch();
     console.log(product)
@@ -28,7 +29,7 @@ const Products = () => {
                                 <img src={prod.image} alt="" style={{ "height": "300px", "width": "300px", "objectFit": "cover" }} />
                                 <h1>{prod.title}</h1>
                                 {cart.some(p => p.id === prod.id) ? (
-                                    <button onClick={() => dispatch(remove(prod.id))}>Remove</button>
+                                    <button onClick={() => dispatch(remove({id:prod.id,total:prod.price}))}>Remove</button>
                                 ) :
                                     <button onClick={() => dispatch(add(prod))}>Add</button>
                                 }
